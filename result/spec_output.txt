@@ -1,0 +1,1 @@
+mocha mocha_xero.js -t 60000 -R doc  > ../result/spec.html

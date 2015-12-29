@@ -1,0 +1,158 @@
+ > CALL init({"browserName":"chrome"}) 
+ > POST /session {"desiredCapabilities":{"browserName":"chrome","version":"","javascriptEnabled":true,"platform":"ANY"}}
+
+Driving the web on session: 5f8f29d2-fe90-4089-aad4-d755024cedd9
+
+ > RESPONSE init({"browserName":"chrome"}) "5f8f29d2-fe90-4089-aad4-d755024cedd9",{"platform":"LINUX","acceptSslCerts":true,"javascriptEnabled":true,"browserName":"chrome","chrome":{"userDataDir":"/tmp/.com.google.Chrome.ab0pIl"},"rotatable":false,"locationContextEnabled":true,"mobileEmulationEnabled":false,"webdriver.remote.sessionid":"5f8f29d2-fe90-4089-aad4-d755024cedd9","version":"47.0.2526.106","takesHeapSnapshot":true,"cssSelectorsEnabled":true,"databaseEnabled":false,"handlesAlerts":true,"browserConnectionEnabled":false,"nativeEvents":true,"webStorageEnabled":true,"hasTouchScreen":false,"applicationCacheEnabled":false,"takesScreenshot":true}
+ > CALL get("https://www.xero.com/au/") 
+ > POST /session/:sessionID/url {"url":"https://www.xero.com/au/"}
+ > RESPONSE get("https://www.xero.com/au/") 
+    <section class="suite">
+      <h1>Xero E2E Automation Test</h1>
+      <dl>
+ > CALL title() 
+ > GET /session/:sessionID/title 
+ > RESPONSE title() "Accounting Software & Online Bookkeeping | Xero"
+        <dt>should retrieve the page title of main page</dt>
+        <dd><pre><code>browser
+  .title()
+  .then(function (title) {
+    title.should.include(&quot;Accounting Software &amp; Online Bookkeeping | Xero&quot;);
+  })
+  .nodeify(done);</code></pre></dd>
+ > CALL elementByXPath("//li/a[contains(., 'Login')]") 
+ > POST /session/:sessionID/element {"using":"xpath","value":"//li/a[contains(., 'Login')]"}
+ > RESPONSE elementByXPath("//li/a[contains(., 'Login')]") {"ELEMENT":"0"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/0/click 
+ > RESPONSE element.click() 
+ > CALL eval("window.location.href") 
+ > POST /session/:sessionID/execute {"script":"return window.location.href;","args":[]}
+ > RESPONSE eval("window.location.href") "https://login.xero.com/"
+        <dt>should navigate User to the login page</dt>
+        <dd><pre><code>browser
+	    .elementByXPath(&quot;//li/a[contains(., 'Login')]&quot;)
+	    .click()
+	    .eval(&quot;window.location.href&quot;)
+	    .should.eventually.include('https://login.xero.com/')
+.nodeify(done);</code></pre></dd>
+ > CALL elementByCss("#email") 
+ > POST /session/:sessionID/element {"using":"css selector","value":"#email"}
+ > RESPONSE elementByCss("#email") {"ELEMENT":"1"}
+ > CALL element.type("no.baloney.tony@gmail.com") 
+ > POST /session/:sessionID/element/1/value {"value":["no.baloney.tony@gmail.com"]}
+ > RESPONSE element.type("no.baloney.tony@gmail.com") 
+ > CALL elementByCss("#password") 
+ > POST /session/:sessionID/element {"using":"css selector","value":"#password"}
+ > RESPONSE elementByCss("#password") {"ELEMENT":"2"}
+ > CALL element.type("Password01!") 
+ > POST /session/:sessionID/element/2/value {"value":["Password01!"]}
+ > RESPONSE element.type("Password01!") 
+ > CALL elementByCss("#submitButton") 
+ > POST /session/:sessionID/element {"using":"css selector","value":"#submitButton"}
+ > RESPONSE elementByCss("#submitButton") {"ELEMENT":"3"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/3/click 
+ > RESPONSE element.click() 
+        <dt>should enter valid credentials to log in</dt>
+        <dd><pre><code>lib.login(browser, username, password, done);</code></pre></dd>
+ > CALL title() 
+ > GET /session/:sessionID/title 
+ > RESPONSE title() "Xero | Dashboard | Demo Company (AU)"
+        <dt>should land at the Dashboard page</dt>
+        <dd><pre><code>browser
+.title()
+.then(function (title) {
+  title.should.include(&quot;Xero | Dashboard&quot;);
+})
+.nodeify(done);</code></pre></dd>
+ > CALL elementByCss("h2.org-name") 
+ > POST /session/:sessionID/element {"using":"css selector","value":"h2.org-name"}
+ > RESPONSE elementByCss("h2.org-name") {"ELEMENT":"4"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/4/click 
+ > RESPONSE element.click() 
+ > CALL elementByXPath("//a[text()='Demo Company (AU)']") 
+ > POST /session/:sessionID/element {"using":"xpath","value":"//a[text()='Demo Company (AU)']"}
+ > RESPONSE elementByXPath("//a[text()='Demo Company (AU)']") {"ELEMENT":"5"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/5/click 
+ > RESPONSE element.click() 
+ > CALL title() 
+ > GET /session/:sessionID/title 
+ > RESPONSE title() "Xero | Dashboard | Demo Company (AU)"
+        <dt>should select Demo Company (AU) from the menu list</dt>
+        <dd><pre><code>browser
+  .elementByCss('h2.org-name')
+  .click()
+  .elementByXPath(&quot;//a[text()='Demo Company (AU)']&quot;)
+  .click()
+  .title().should.become(&quot;Xero | Dashboard | Demo Company (AU)&quot;)	
+  .nodeify(done);</code></pre></dd>
+ > CALL elementByCss("#Accounts") 
+ > POST /session/:sessionID/element {"using":"css selector","value":"#Accounts"}
+ > RESPONSE elementByCss("#Accounts") {"ELEMENT":"6"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/6/click 
+ > RESPONSE element.click() 
+ > CALL elementByXPath("//li/a[text()='Sales']") 
+ > POST /session/:sessionID/element {"using":"xpath","value":"//li/a[text()='Sales']"}
+ > RESPONSE elementByXPath("//li/a[text()='Sales']") {"ELEMENT":"7"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/7/click 
+ > RESPONSE element.click() 
+ > CALL elementByXPath("//a[text()='Repeating']") 
+ > POST /session/:sessionID/element {"using":"xpath","value":"//a[text()='Repeating']"}
+ > RESPONSE elementByXPath("//a[text()='Repeating']") {"ELEMENT":"8"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/8/click 
+ > RESPONSE element.click() 
+        <dt>should select Sales from the Accounts menu and click the Repeating tab</dt>
+        <dd><pre><code>browser
+ //select Accounts &gt; Sales option from the menu bar
+  .elementByCss('#Accounts')
+  .click()
+  .elementByXPath(&quot;//li/a[text()='Sales']&quot;)
+  .click()
+  .elementByXPath(&quot;//a[text()='Repeating']&quot;)
+  .click()
+  .nodeify(done);</code></pre></dd>
+ > CALL elementByXPath("//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1012')]") 
+ > POST /session/:sessionID/element {"using":"xpath","value":"//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1012')]"}
+ > RESPONSE elementByXPath("//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1012')]") {"ELEMENT":"9"}
+ > CALL element.text() 
+ > GET /session/:sessionID/element/9/text 
+ > RESPONSE element.text() "ORC1012"
+ > CALL elementByXPath("//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1002')]") 
+ > POST /session/:sessionID/element {"using":"xpath","value":"//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1002')]"}
+ > RESPONSE elementByXPath("//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1002')]") {"ELEMENT":"10"}
+ > CALL element.text() 
+ > GET /session/:sessionID/element/10/text 
+ > RESPONSE element.text() "ORC1002"
+        <dt>should verify that Repeating Invoices with references ORC1012, ORC1002 belong to City Limousines (Task B)</dt>
+        <dd><pre><code>browser
+  .elementByXPath(&quot;//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1012')]&quot;).text()
+  .should.become('ORC1012')   //Reference number is verified for City Limousines
+  .elementByXPath(&quot;//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1002')]&quot;).text()
+  .should.become('ORC1002')   //Reference number is verified for City Limousines      
+  .nodeify(done);</code></pre></dd>
+      </dl>
+    </section>
+ > CALL elementByXPath("//a[@class='username']") 
+ > POST /session/:sessionID/element {"using":"xpath","value":"//a[@class='username']"}
+ > RESPONSE elementByXPath("//a[@class='username']") {"ELEMENT":"11"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/11/click 
+ > RESPONSE element.click() 
+ > CALL elementByXPath("//a[text()='Logout']") 
+ > POST /session/:sessionID/element {"using":"xpath","value":"//a[text()='Logout']"}
+ > RESPONSE elementByXPath("//a[text()='Logout']") {"ELEMENT":"12"}
+ > CALL element.click() 
+ > POST /session/:sessionID/element/12/click 
+ > RESPONSE element.click() 
+ > CALL quit() 
+ > DELETE /session/:sessionID 
+
+Ending your web drivage..
+
+ > RESPONSE quit() 

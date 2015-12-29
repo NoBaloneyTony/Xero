@@ -1,0 +1,23 @@
+{
+  "name": "nodejs",
+  "version": "0.12.7",
+  "description": "My nodejs utilities",
+  "main": "closure.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
+    "colors": "^1.1.2",
+    "expect": "^1.13.4",
+    "faker": "^3.0.1",
+    "wd": "^0.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "author": "TB",
+  "license": "ISC"
+}
