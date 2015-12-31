@@ -1,9 +1,12 @@
  > CALL init({"browserName":"chrome"}) 
  > POST /session {"desiredCapabilities":{"browserName":"chrome","version":"","javascriptEnabled":true,"platform":"ANY"}}
 
-Driving the web on session: 5f8f29d2-fe90-4089-aad4-d755024cedd9
+Driving the web on session: e6cc0bb3-ee29-4adb-9658-365c837bc85a
 
- > RESPONSE init({"browserName":"chrome"}) "5f8f29d2-fe90-4089-aad4-d755024cedd9",{"platform":"LINUX","acceptSslCerts":true,"javascriptEnabled":true,"browserName":"chrome","chrome":{"userDataDir":"/tmp/.com.google.Chrome.ab0pIl"},"rotatable":false,"locationContextEnabled":true,"mobileEmulationEnabled":false,"webdriver.remote.sessionid":"5f8f29d2-fe90-4089-aad4-d755024cedd9","version":"47.0.2526.106","takesHeapSnapshot":true,"cssSelectorsEnabled":true,"databaseEnabled":false,"handlesAlerts":true,"browserConnectionEnabled":false,"nativeEvents":true,"webStorageEnabled":true,"hasTouchScreen":false,"applicationCacheEnabled":false,"takesScreenshot":true}
+ > RESPONSE init({"browserName":"chrome"}) "e6cc0bb3-ee29-4adb-9658-365c837bc85a",{"platform":"LINUX","acceptSslCerts":true,"javascriptEnabled":true,"browserName":"chrome","chrome":{"userDataDir":"/tmp/.com.google.Chrome.SajJ6H"},"rotatable":false,"locationContextEnabled":true,"mobileEmulationEnabled":false,"webdriver.remote.sessionid":"e6cc0bb3-ee29-4adb-9658-365c837bc85a","version":"47.0.2526.106","takesHeapSnapshot":true,"cssSelectorsEnabled":true,"databaseEnabled":false,"handlesAlerts":true,"browserConnectionEnabled":false,"nativeEvents":true,"webStorageEnabled":true,"hasTouchScreen":false,"applicationCacheEnabled":false,"takesScreenshot":true}
+ > CALL setImplicitWaitTimeout(60000) 
+ > POST /session/:sessionID/timeouts/implicit_wait {"ms":60000}
+ > RESPONSE setImplicitWaitTimeout(60000) 
  > CALL get("https://www.xero.com/au/") 
  > POST /session/:sessionID/url {"url":"https://www.xero.com/au/"}
  > RESPONSE get("https://www.xero.com/au/") 
@@ -136,19 +139,36 @@ Driving the web on session: 5f8f29d2-fe90-4089-aad4-d755024cedd9
   .elementByXPath(&quot;//table/tbody/tr/td/a[text()='City Limousines']/../../td[contains(.,'ORC1002')]&quot;).text()
   .should.become('ORC1002')   //Reference number is verified for City Limousines      
   .nodeify(done);</code></pre></dd>
+ > CALL waitForElementByCss("#ext-gen47",{},2000) 
+ > CALL elements("css selector","#ext-gen47") 
+ > POST /session/:sessionID/elements {"using":"css selector","value":"#ext-gen47"}
+ > RESPONSE elements("css selector","#ext-gen47") [{"ELEMENT":"11"}]
+ > CALL element.isDisplayed() 
+ > GET /session/:sessionID/element/11/displayed 
+ > RESPONSE element.isDisplayed() true
+ > RESPONSE waitForElementByCss("#ext-gen47",{},2000) {"ELEMENT":"11"}
+ > CALL elementsByTagName("tr") 
+ > POST /session/:sessionID/elements {"using":"tag name","value":"tr"}
+ > RESPONSE elementsByTagName("tr") [{"ELEMENT":"12"},{"ELEMENT":"13"},{"ELEMENT":"14"}]
+        <dt class="error">should verify the number of rows in the Repeating table equals 2 plus 1 header row</dt>
+        <dd class="error"><pre><code>browser
+  .waitForElementByCss(&quot;#ext-gen47&quot;, asserters.isDisplayed , 2000)
+  .elementsByTagName('tr').should.eventually.have.length(2)
+  .nodeify(done);</code></pre></dd>
+        <dd class="error">AssertionError: expected [ Array(3) ] to have a length of 2 but got 3</dd>
       </dl>
     </section>
  > CALL elementByXPath("//a[@class='username']") 
  > POST /session/:sessionID/element {"using":"xpath","value":"//a[@class='username']"}
- > RESPONSE elementByXPath("//a[@class='username']") {"ELEMENT":"11"}
+ > RESPONSE elementByXPath("//a[@class='username']") {"ELEMENT":"15"}
  > CALL element.click() 
- > POST /session/:sessionID/element/11/click 
+ > POST /session/:sessionID/element/15/click 
  > RESPONSE element.click() 
  > CALL elementByXPath("//a[text()='Logout']") 
  > POST /session/:sessionID/element {"using":"xpath","value":"//a[text()='Logout']"}
- > RESPONSE elementByXPath("//a[text()='Logout']") {"ELEMENT":"12"}
+ > RESPONSE elementByXPath("//a[text()='Logout']") {"ELEMENT":"16"}
  > CALL element.click() 
- > POST /session/:sessionID/element/12/click 
+ > POST /session/:sessionID/element/16/click 
  > RESPONSE element.click() 
  > CALL quit() 
  > DELETE /session/:sessionID 

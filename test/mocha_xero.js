@@ -34,6 +34,7 @@ before(function (done) {
   });
   browser
     .init({browserName:'chrome'})
+    .setImplicitWaitTimeout(60000)
     .get("https://www.xero.com/au/")
     .nodeify(done);  //same as : .then(function() { done(); });
 });
@@ -51,6 +52,8 @@ after(function (done) {
 
 // enables chai assertion chaining
 chaiAsPromised.transferPromiseness = wd.transferPromiseness;
+
+var asserters = wd.asserters; // commonly used asserters
 
 // regular mocha usage is also an option
 describe("Xero E2E Automation Test", function() {
@@ -127,7 +130,6 @@ describe("Xero E2E Automation Test", function() {
         it("should verify the number of rows in the Repeating table equals 2 plus 1 header row", function (done) {
       browser
         .waitForElementByCss("#ext-gen47", asserters.isDisplayed , 2000)
-        //.waitForElementByXPath("//a[text()='City Limousines']/../../../../tbody/tr")
         .elementsByTagName('tr').should.eventually.have.length(2)
         .nodeify(done);
     });
