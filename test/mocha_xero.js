@@ -124,6 +124,14 @@ describe("Xero E2E Automation Test", function() {
         .nodeify(done);
     });
 
+        it("should verify the number of rows in the Repeating table equals 2 plus 1 header row", function (done) {
+      browser
+        .waitForElementByCss("#ext-gen47", asserters.isDisplayed , 2000)
+        //.waitForElementByXPath("//a[text()='City Limousines']/../../../../tbody/tr")
+        .elementsByTagName('tr').should.eventually.have.length(2)
+        .nodeify(done);
+    });
+
     it.skip("should check that the contact has a valid email address (Task B)", function (done) {
       browser
        //Manual task performed.
