@@ -18,7 +18,7 @@ Priviledges: Administrator (su) level access to install some npm packages global
 
 Zip folder structure:
 
-nodejs 	
+Xero 	
 - config > config.json
 - lib > functions.js
 - node_modules > ...
@@ -32,7 +32,7 @@ nodejs
 	
 Firstly install a stable version of nodejs (e.g. v5.3): https://nodejs.org/en/download/stable/
 
-Install nodejs packages as per package.json file (refer to nodejs root folder). 
+Install nodejs packages as per package.json file (refer to Xero root folder). 
 
 Since the package.json file is already defined, open a terminal window and under the nodejs folder just type 'npm install' to install the required packages for the purpose of this test.
 
