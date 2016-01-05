@@ -32,6 +32,9 @@ closure.js (sample .js file)
 
 Firstly install a stable version of nodejs (e.g. v5.3): https://nodejs.org/en/download/stable/
 
+To install mocha as the testing framework, run the following command at the terminal/command prompt: 
+'npm install mocha -g'
+
 Install nodejs packages as per package.json file (refer to Xero root folder). 
 
 Since the package.json file is already defined, open a terminal window and under the nodejs folder just type 'npm install' to install the required packages for the purpose of this test.
@@ -39,9 +42,6 @@ Since the package.json file is already defined, open a terminal window and under
 To explain the package.json file in more detail, read on...
 
 To create a dependencies package under the root folder (nodejs), type 'npm init' to create the package.json file and follow the prompts. The package.json file contains all the relevant project information (meta data) necessary for setting up packages and running scripts.
-
-To install mocha, run the following command at the terminal/command prompt: 
-'npm install mocha -g'
 
 Note: To install individual packages and save the dependencies to package.json file you must use nodejs' package manager, npm: for example, to  install an npm package,  open a terminal window (or cmd window) and type 'npm install wd', Whenever a package is installed in a folder, the packages are placed under node_modules folder by default if installed locally. To install packages globally, you must use the -g option, e.g. 'npm install mocha -g' where the -g option implies a global setting but let's not worry about the -g option for now as mocha is not listed as a dependency in package.json when using the '-g' option. 
 
