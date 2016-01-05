@@ -32,9 +32,6 @@ closure.js (sample .js file)
 
 Firstly install a stable version of nodejs (e.g. v5.3): https://nodejs.org/en/download/stable/
 
-To install mocha as the testing framework, run the following command at the terminal/command prompt: 
-'npm install mocha -g'
-
 Install nodejs packages as per package.json file (refer to Xero root folder). 
 
 Since the package.json file is already defined, open a terminal window and under the nodejs folder just type 'npm install' to install the required packages for the purpose of this test.
@@ -50,6 +47,9 @@ Essential installs include the selenium-standalone npm package which will be use
 The selenium-standalone npm package can be installed by following the excellent instructions shown here: https://www.npmjs.com/package/selenium-standalone.
 
 The Chrome driver binary can be found here: http://chromedriver.storage.googleapis.com/index.html. In Linux the driver script (google-chrome bin) was extracted to the /usr/bin/ folder as per recommendations.
+
+To install mocha as the testing framework, run the following command at the terminal/command prompt: 
+'npm install mocha -g'
 
 The next step is to run the script created to automate an end-to-end scenario using a Xero Demo (AU) application to satisfy instructions related to Task A. To execute the automated mocha script, there are several ways to add more flexibilty in executing automated scripts. 
 
