@@ -24,12 +24,12 @@ Xero
 - node_modules > ...
 - result > spec.html
 - test > mocha_xero.js, mocha.opts
-- util > util.js
-	package.json
-	makefile
-	closure.js (sample .js file)
+- util > util.js 
 
-	
+package.json
+makefile
+closure.js (sample .js file)
+
 Firstly install a stable version of nodejs (e.g. v5.3): https://nodejs.org/en/download/stable/
 
 Install nodejs packages as per package.json file (refer to Xero root folder). 
