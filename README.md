@@ -26,8 +26,8 @@ Xero
 - test > mocha_xero.js, mocha.opts
 - util > util.js 
 
-package.json
-makefile
+package.json, 
+makefile, 
 closure.js (sample .js file)
 
 Firstly install a stable version of nodejs (e.g. v5.3): https://nodejs.org/en/download/stable/
