@@ -1,7 +1,7 @@
 # Xero E2E Automated Test
 by Tony Bosevski
 
-Summary: 
+**Summary:**
 
 I chose to automate using nodejs and a package called WD, which requires a selenium server to run tests using specific browsers, in combination with a BDD based testing framework called mocha. 
 
@@ -10,13 +10,13 @@ I selected nodejs because it is a lightweight programming application of Javascr
 I will now explain both the setup of my automated test framework and the details pertaining to the automation of the Xero end-to-end (E2E) test sample. 
 
 
-Dev Environment: Linux 64-bit system 
+**Dev Environment:** Linux 64-bit system 
 
-Tools/Apps: nodejs, mocha, WD, selenium-standalone, terminal client, Sublime Text 2, Chrome browser, chromedriver
+**Tools/Apps:** nodejs, mocha, WD, selenium-standalone, terminal client, Sublime Text 2, Chrome browser, chromedriver
 
-Priviledges: Administrator (su) level access to install some npm packages globally
+**Priviledges:** Administrator (su) level access to install some npm packages globally
 
-Zip folder structure:
+**Zip folder structure:**
 
 Xero 	
 - config > config.json
@@ -30,9 +30,9 @@ package.json,
 makefile, 
 closure.js (sample .js file)
 
-Firstly install a stable version of nodejs (e.g. v5.3): https://nodejs.org/en/download/stable/
+(1) Firstly install a stable version of nodejs (e.g. v5.3): https://nodejs.org/en/download/stable/
 
-Install nodejs packages as per package.json file (refer to Xero root folder). 
+(2) Install nodejs packages as per package.json file (refer to Xero root folder). 
 
 Since the package.json file is already defined, open a terminal window and under the nodejs folder just type 'npm install' to install the required packages for the purpose of this test.
 
@@ -42,16 +42,16 @@ To create a dependencies package under the root folder (nodejs), type 'npm init'
 
 Note: To install individual packages and save the dependencies to package.json file you must use nodejs' package manager, npm: for example, to  install an npm package,  open a terminal window (or cmd window) and type 'npm install wd', Whenever a package is installed in a folder, the packages are placed under node_modules folder by default if installed locally. To install packages globally, you must use the -g option, e.g. 'npm install mocha -g' where the -g option implies a global setting but let's not worry about the -g option for now as mocha is not listed as a dependency in package.json when using the '-g' option. 
 
-Essential installs include the selenium-standalone npm package which will be used to launch the browser driver and chrome driver because the intention is to use the better performing Chrome browser to run the tests instead of the default Firefox browser.
+Essential installs include the selenium-standalone npm package which will be used to launch the browser driver and chrome driver because the intention is to use the better performing Chrome browser to run the tests instead of the default Firefox browser.``
 
-The selenium-standalone npm package can be installed by following the excellent instructions shown here: https://www.npmjs.com/package/selenium-standalone.
+(3) The selenium-standalone npm package can be installed by following the excellent instructions shown here: https://www.npmjs.com/package/selenium-standalone.
 
-The Chrome driver binary can be found here: http://chromedriver.storage.googleapis.com/index.html. In Linux the driver script (google-chrome bin) was extracted to the /usr/bin/ folder as per recommendations.
+(4) The Chrome driver binary can be found here: http://chromedriver.storage.googleapis.com/index.html. In Linux the driver script (google-chrome bin) was extracted to the /usr/bin/ folder as per recommendations.
 
-To install mocha as the testing framework, run the following command at the terminal/command prompt: 
+(5) To install mocha as the testing framework, run the following command at the terminal/command prompt: 
 'npm install mocha -g'
 
-The next step is to run the script created to automate an end-to-end scenario using a Xero Demo (AU) application to satisfy instructions related to Task A. To execute the automated mocha script, there are several ways to add more flexibilty in executing automated scripts. 
+(6) The next step is to run the script created to automate an end-to-end scenario using a Xero Demo (AU) application to satisfy instructions related to Task A. To execute the automated mocha script, there are several ways to add more flexibilty in executing automated scripts. 
 
 i) Start a new terminal session and start the selenium-standalone server using the following terminal (or cmd) command: 'selenium-standalone start'.
 
@@ -59,7 +59,7 @@ ii) Create a Makefile to tell mocha where the mocha runner is installed and whic
 
 iii) To specify default mocha related options, create a mocha.opts file to specify default options and place this file under the test folder. For the purpose of this test, the timeout has been increased to 60s as denoted by the option, --timeout 60000.
 
-To execute the Task A script, open a new terminal session (or cmd window) and enter the following commands: 
+(7) To execute the Task A script, open a new terminal session (or cmd window) and enter the following commands: 
 
 i) 'cd nodejs/test'
 - By default, mocha runs scripts in the test folder. For the purpose of this test, however, the User should navigate to the nodejs/test folder to run the following command.
