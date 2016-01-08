@@ -40,7 +40,7 @@ To explain the package.json file in more detail, read on...
 
 To create a dependencies package under the root folder (nodejs), type 'npm init' to create the package.json file and follow the prompts. The package.json file contains all the relevant project information (meta data) necessary for setting up packages and running scripts.
 
-Note: To install individual packages and save the dependencies to package.json file you must use nodejs' package manager, npm: for example, to  install an npm package,  open a terminal window (or cmd window) and type 'npm install wd', Whenever a package is installed in a folder, the packages are placed under node_modules folder by default if installed locally. To install packages globally, you must use the -g option, e.g. 'npm install mocha -g' where the -g option implies a global setting but let's not worry about the -g option for now as mocha is not listed as a dependency in package.json when using the '-g' option. 
+Note: To install individual packages and save the dependencies to package.json file you must use nodejs' package manager, npm: for example, to  install the npm 'wd' package,  open a terminal window (or cmd window) and type 'npm install wd', Whenever a package is installed in a folder, the packages are placed under node_modules folder by default if installed locally. To install packages globally, you must use the -g option, e.g. 'npm install mocha -g' where the -g option implies a global setting but let's not worry about the -g option for now as mocha is not listed as a dependency in package.json when using the '-g' option. 
 
 Essential installs include the selenium-standalone npm package which will be used to launch the browser driver and chrome driver because the intention is to use the better performing Chrome browser to run the tests instead of the default Firefox browser.``
 
@@ -51,15 +51,17 @@ Essential installs include the selenium-standalone npm package which will be use
 (5) To install mocha as the testing framework, run the following command at the terminal/command prompt: 
 'npm install mocha -g'
 
-(6) The next step is to run the script created to automate an end-to-end scenario using a Xero Demo (AU) application to satisfy instructions related to Task A. To execute the automated mocha script, there are several ways to add more flexibilty in executing automated scripts. 
+(6) The next step is to run the script created to automate an end-to-end scenario using a Xero Demo (AU) application to satisfy instructions related to Task A. 
 
 i) Start a new terminal session and start the selenium-standalone server using the following terminal (or cmd) command: 'selenium-standalone start'.
 
-ii) Create a Makefile to tell mocha where the mocha runner is installed and which folder to find the mocha tests. For the purpose of this test, the mocha scripts are installed under the nodejs > test folder.
+(7) There are several ways to add more flexibilty in executing automated scripts using mocha. 
 
-iii) To specify default mocha related options, create a mocha.opts file to specify default options and place this file under the test folder. For the purpose of this test, the timeout has been increased to 60s as denoted by the option, --timeout 60000.
+i) Create a Makefile to tell mocha where the mocha runner is installed and which folder to find the mocha tests. For the purpose of this test, the mocha scripts are installed under the nodejs > test folder.
 
-(7) To execute the Task A script, open a new terminal session (or cmd window) and enter the following commands: 
+ii) To specify default mocha related options, create a mocha.opts file to specify default options and place this file under the test folder. For the purpose of this test, the timeout has been increased to 60s as denoted by the option, --timeout 60000.
+
+(8) To execute the Task A script, open a new terminal session (or cmd window) and enter the following commands: 
 
 i) 'cd nodejs/test'
 - By default, mocha runs scripts in the test folder. For the purpose of this test, however, the User should navigate to the nodejs/test folder to run the following command.
@@ -68,8 +70,8 @@ ii) 'mocha mocha_xero.js -t 60000 -R doc  > ../result/spec.html'
 - The above command runs mocha_xero.js automated test script using the mocha test runner. 
 
 - The -t 60000 option is to ensure the timeout is set to 60s at runtime. This timeout value is already set as a default value in the mocha.opts file but I notice that this value is not set at times.
-- The -R doc is the reporting format chosen to display the results of the test as an html output. 
-- the test result is published as 'spec.html' under the result folder.
+- The -R doc is the reporting format chosen to display the results of the test. 
+- the test result is saved in html format and is published as 'spec.html' under the result folder.
 
 Hopefully reading the mocha_xero.js script is self explanatory. For the purpose of this demo, some actions were peformed manually to simplify the automated script. 
 
