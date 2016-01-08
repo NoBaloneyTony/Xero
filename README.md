@@ -38,7 +38,7 @@ Since the package.json file is already defined, open a terminal window and under
 
 To explain the package.json file in more detail, read on...
 
-To create a dependencies package under the root folder (nodejs), type 'npm init' to create the package.json file and follow the prompts. The package.json file contains all the relevant project information (meta data) necessary for setting up packages and running scripts.
+To create a dependencies package under the root folder (Xero), type 'npm init' to create the package.json file and follow the prompts. The package.json file contains all the relevant project information (meta data) necessary for setting up packages and running scripts.
 
 Note: To install individual packages and save the dependencies to package.json file you must use nodejs' package manager, npm: for example, to  install the npm 'wd' package,  open a terminal window (or cmd window) and type 'npm install wd', Whenever a package is installed in a folder, the packages are placed under node_modules folder by default if installed locally. To install packages globally, you must use the -g option, e.g. 'npm install mocha -g' where the -g option implies a global setting but let's not worry about the -g option for now as mocha is not listed as a dependency in package.json when using the '-g' option. 
 
